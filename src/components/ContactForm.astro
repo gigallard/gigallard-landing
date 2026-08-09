@@ -1,0 +1,97 @@
+---
+---
+<section id="contacto" class="py-24 px-6 bg-black">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Hablemos</h2>
+      <p class="text-gray-400 text-lg">Contanos qué hacés y en qué querés mejorar.</p>
+    </div>
+    <form
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      class="space-y-5"
+      id="contact-form"
+    >
+      <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
+      <input type="hidden" name="subject" value="Nuevo contacto desde gigallard.com.ar" />
+      <input type="hidden" name="redirect" value="false" />
+      <input type="checkbox" name="botcheck" class="hidden" />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-sm text-gray-400 mb-1.5">Tu nombre *</label>
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="¿Cómo te llamás?"
+            class="w-full bg-[#0d1a3a]/60 border border-[#17428F]/40 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#008AD1] transition-colors"
+          />
+        </div>
+        <div>
+          <label class="block text-sm text-gray-400 mb-1.5">Tu actividad *</label>
+          <input
+            type="text"
+            name="empresa"
+            required
+            placeholder="Ej: médico, campo, tienda..."
+            class="w-full bg-[#0d1a3a]/60 border border-[#17428F]/40 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#008AD1] transition-colors"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1.5">Tu email *</label>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="para responderte"
+          class="w-full bg-[#0d1a3a]/60 border border-[#17428F]/40 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#008AD1] transition-colors"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1.5">¿En qué podemos ayudarte? *</label>
+        <textarea
+          name="message"
+          required
+          rows="4"
+          placeholder="Contanos qué tarea te consume más tiempo o qué problema querés resolver..."
+          class="w-full bg-[#0d1a3a]/60 border border-[#17428F]/40 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#008AD1] transition-colors resize-none"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-[#008AD1] hover:bg-[#0070a8] text-white font-semibold py-4 rounded-xl transition-colors duration-200 text-lg shadow-lg shadow-[#008AD1]/20"
+      >
+        Enviar mensaje →
+      </button>
+    </form>
+
+    <div id="form-success" class="hidden text-center py-12">
+      <div class="text-5xl mb-4">✅</div>
+      <h3 class="text-white text-2xl font-bold mb-2">¡Gracias por escribirnos!</h3>
+      <p class="text-gray-400">Te contactamos a la brevedad.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const success = document.getElementById('form-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    });
+    if (res.ok) {
+      form.classList.add('hidden');
+      success?.classList.remove('hidden');
+    }
+  });
+</script>

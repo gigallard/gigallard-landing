@@ -1,0 +1,45 @@
+---
+const services = [
+  {
+    icon: "🔍",
+    title: "Diagnóstico Digital",
+    description: "Miramos tu actividad y te decimos exactamente qué tareas se pueden automatizar. Sin tecnicismos, sin vueltas — un informe claro con pasos concretos."
+  },
+  {
+    icon: "🗺️",
+    title: "Plan de acción",
+    description: "Diseñamos un plan a tu medida: cuánto cuesta, cuánto tarda y qué resultados podés esperar. Adaptado a tu tiempo y presupuesto real."
+  },
+  {
+    icon: null,
+    image: "/logo-amazon-quick.png",
+    title: "IA con tecnología líder",
+    description: "Usamos las herramientas de inteligencia artificial más avanzadas del mercado, incluyendo Amazon Quick y el ecosistema AWS — para darte soluciones robustas y escalables."
+  },
+  {
+    icon: "🛡️",
+    title: "Acompañamiento continuo",
+    description: "No desaparecemos después de implementar. Estamos con vos cada mes para que todo funcione, mejore y siga generando resultados."
+  }
+];
+---
+<section class="py-24 px-6 bg-[#050a14]">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">¿Qué hacemos?</h2>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto">Un proceso simple, de principio a fin, para que la tecnología trabaje para tu actividad.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services.map((s) => (
+        <div class="bg-[#0d1a3a]/60 border border-[#17428F]/30 rounded-xl p-6 hover:border-[#008AD1]/60 hover:bg-[#0d1a3a] transition-all duration-200">
+          <div class="mb-4 h-10 flex items-center">
+            {s.image && <img src={s.image} alt={s.title} class="h-10 w-10 rounded-lg object-cover" />}
+            {s.icon && <span class="text-3xl">{s.icon}</span>}
+          </div>
+          <h3 class="text-white font-semibold text-lg mb-2">{s.title}</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">{s.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
