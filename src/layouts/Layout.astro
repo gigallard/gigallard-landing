@@ -7,9 +7,32 @@ interface Props {
 }
 
 const {
-  title = "Gigallard Consulting — Expertos en IA y transformación digital",
-  description = "Diagnósticos, roadmaps e implementación de agentes IA para tu emprendimiento."
+  title = "Gigallard Consulting — Consultoría IA para PYMEs y Profesionales en Argentina",
+  description = "Automatizá tareas repetitivas con inteligencia artificial. Diagnósticos, agentes IA y acompañamiento mensual para profesionales, comerciantes, productores del campo y pequeñas empresas. Sin necesidad de saber de tecnología."
 } = Astro.props;
+
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Gigallard Consulting",
+  "description": "Consultoría de inteligencia artificial para PYMEs, profesionales y productores en Argentina. Automatización de tareas repetitivas, implementación de agentes IA y acompañamiento mensual.",
+  "url": "https://gigallard.com.ar",
+  "logo": "https://gigallard.com.ar/logo-gigallard.svg",
+  "image": "https://gigallard.com.ar/og-image.png",
+  "email": "hola@gigallard.com.ar",
+  "address": { "@type": "PostalAddress", "addressCountry": "AR" },
+  "areaServed": { "@type": "Country", "name": "Argentina" },
+  "priceRange": "$$",
+  "knowsAbout": [
+    "Inteligencia Artificial",
+    "Automatización de procesos",
+    "Amazon Quick",
+    "Transformación digital",
+    "Consultoría tecnológica para PYMEs",
+    "IA para el campo y producción agropecuaria",
+    "IA para profesionales independientes"
+  ]
+};
 ---
 
 <!doctype html>
@@ -17,14 +40,23 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://gigallard.com.ar/" />
+    <meta name="robots" content="index, follow" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://gigallard.com.ar" />
+    <meta property="og:url" content="https://gigallard.com.ar/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://gigallard.com.ar/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Gigallard Consulting" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://gigallard.com.ar/og-image.png" />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
